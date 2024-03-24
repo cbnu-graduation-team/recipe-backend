@@ -4,6 +4,8 @@ import com.recipe.backend.domain.user.domain.User;
 import com.recipe.backend.domain.user.dto.SignupRequest;
 
 import com.recipe.backend.domain.user.service.UserService;
+import com.recipe.backend.global.response.ApiResponse;
+import com.recipe.backend.global.response.SuccessMessages;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -20,9 +22,9 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<String> join(@RequestBody @Valid SignupRequest dto){
+    public ResponseEntity<ApiResponse<Object>> join(@RequestBody @Valid SignupRequest dto){
         userService.signup(dto);
-        return ResponseEntity.ok(dto.getUsername());
+        return ApiResponse.success(SuccessMessages.SIGNUP_SUCCESS, dto.getUsername());
     }
 
 }
