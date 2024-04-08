@@ -1,12 +1,8 @@
 package com.recipe.backend.domain.recipe.domain;
 
 import com.recipe.backend.domain.ingredient.domain.Ingredient;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.recipe.backend.domain.recipe_ingredient.domain.RecipeIngredient;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -14,6 +10,7 @@ import java.util.List;
 public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="recipeId")
     private Long id;
 
     private String title;
@@ -21,10 +18,9 @@ public class Recipe {
     private String thumbnail;
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Ingredient> ingredients;
+    private List<RecipeIngredient> recipeIngredients;
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RecipeStep> steps;
 
-    // 생성자, Getter, Setter 생략
 }

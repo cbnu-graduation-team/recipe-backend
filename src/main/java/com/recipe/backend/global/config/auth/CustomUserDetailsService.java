@@ -2,6 +2,7 @@ package com.recipe.backend.global.config.auth;
 
 import com.recipe.backend.domain.user.repository.UserRepository;
 import com.recipe.backend.global.response.ErrorMessage;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -14,12 +15,10 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository; // 사용자 정보를 관리하는 리포지토리
-    public CustomUserDetailsService(UserRepository userRepository){
-        this.userRepository = userRepository;
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

@@ -28,6 +28,7 @@ public class JwtUtil {
     }
 
     public String getUserNameFromJwtToken(String token) {
+        token = token.startsWith("Bearer ") ? token.substring(7) : token;
         Claims claims = Jwts.parser()
                 .setSigningKey(jwtSecret)
                 .parseClaimsJws(token)
