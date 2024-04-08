@@ -4,10 +4,12 @@ import com.recipe.backend.global.TimeStamp;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Builder
 @Entity
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class User extends TimeStamp {

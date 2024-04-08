@@ -12,9 +12,16 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     database: mysql
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
+
+
 logging:
   level:
     org:
       springframework:
         security: debug
+
+app:
+  # 현서찬민 13번
+  jwtSecret: 7ZiE7ISc7LCs66+87ZiE7ISc7LCs66+87ZiE7ISc7LCs66+87ZiE7ISc7LCs66+87ZiE7ISc7LCs66+87ZiE7ISc7LCs66+87ZiE7ISc7LCs66+87ZiE7ISc7LCs66+87ZiE7ISc7LCs66+87ZiE7ISc7LCs66+87ZiE7ISc7LCs66+87ZiE7ISc7LCs66+87ZiE7ISc7LCs66+8
+  jwtExpirationMs: 43200000
