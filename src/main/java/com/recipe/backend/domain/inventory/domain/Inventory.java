@@ -8,24 +8,26 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 public class Inventory {
+    public Inventory(User user){
+        this.setUser(user);
+    }
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long inventoryId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "inventory_id")
+    private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "ingredientId")
-    private Ingredient ingredient;
-
-    @Column(length = 128)
-    private LocalDate expiryDate;
+    @OneToMany(mappedBy = "inventory",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<InventoryIngredient> inventoryIngredients = new ArrayList<>();
 }

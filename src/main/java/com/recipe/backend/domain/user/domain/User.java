@@ -1,5 +1,6 @@
 package com.recipe.backend.domain.user.domain;
 
+import com.recipe.backend.domain.inventory.domain.Inventory;
 import com.recipe.backend.global.TimeStamp;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,5 +29,6 @@ public class User extends TimeStamp {
     @Column(nullable = false, length = 100)
     private String password;
 
-
+    @OneToOne(mappedBy = "user")
+    private Inventory inventory;
 }

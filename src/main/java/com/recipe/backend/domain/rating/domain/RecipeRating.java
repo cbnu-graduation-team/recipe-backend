@@ -16,14 +16,15 @@ import java.time.LocalDateTime;
 public class RecipeRating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ratingId;
+    @Column(name = "rating_id")
+    private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "recipeId")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
-    @ManyToOne
-    @JoinColumn(name = "userId")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private User user;
 
     private Integer rating;

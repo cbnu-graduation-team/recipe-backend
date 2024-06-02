@@ -13,6 +13,7 @@ public enum ErrorMessage {
     TOKEN_EXPIRED("토큰이 만료되었습니다. 다시 로그인해주세요"),
     ADD_INGRE_FAIL("재료 추가에 실패하였습니다."),
     DUPLICATE_INGRE("이미 있는 재료입니다."),
-    INVENTORY_NOT_FOUND("냉장고를 찾지 못하였습니다.");
+    INVENTORY_NOT_FOUND("냉장고를 찾지 못하였습니다."),
+    INGRE_NOT_FOUND("재료가 없습니다.");
     private final String message;
 }

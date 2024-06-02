@@ -38,7 +38,10 @@ public class SecurityConfig {
                 .httpBasic().disable()
                 .formLogin().disable()
                 .authorizeRequests(authorizeRequests ->
-                        authorizeRequests.anyRequest().permitAll()) // 모든 요청에 대해 접근 허용
+                        authorizeRequests.
+                                requestMatchers("/**").permitAll().
+                                anyRequest().authenticated()
+                ) // 모든 요청에 대해 접근 허용
                 .addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling()
                 .authenticationEntryPoint(customAuthenticationEntryPoint);

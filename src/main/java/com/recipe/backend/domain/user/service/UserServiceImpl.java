@@ -1,5 +1,7 @@
 package com.recipe.backend.domain.user.service;
 
+import com.recipe.backend.domain.inventory.domain.Inventory;
+import com.recipe.backend.domain.inventory.repository.InventoryRepository;
 import com.recipe.backend.domain.user.domain.User;
 import com.recipe.backend.domain.user.dto.SignupRequest;
 import com.recipe.backend.domain.user.repository.UserRepository;
@@ -16,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final InventoryRepository inventoryRepository;
     @Override
     public void signup(SignupRequest signupRequest) {
         checkValid(signupRequest);
@@ -25,6 +28,9 @@ public class UserServiceImpl implements UserService {
                 email(signupRequest.getEmail()).
                 build();
         userRepository.save(user);
+
+        Inventory inventory = new Inventory(user);
+        inventoryRepository.save(inventory);
     }
 
     private void checkValid(SignupRequest signupRequest) {

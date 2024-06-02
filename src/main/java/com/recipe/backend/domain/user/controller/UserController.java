@@ -1,5 +1,7 @@
 package com.recipe.backend.domain.user.controller;
 
+import com.recipe.backend.domain.inventory.repository.InventoryRepository;
+import com.recipe.backend.domain.inventory.service.InventoryService;
 import com.recipe.backend.domain.user.domain.User;
 import com.recipe.backend.domain.user.dto.LoginRequest;
 import com.recipe.backend.domain.user.dto.LoginResponse;
@@ -38,6 +40,7 @@ public class UserController {
     private final UserService userService;
     private final AuthenticationManager am;
     private final JwtUtil jwtUtil;
+    private final InventoryRepository inventoryRepository;
 
 
     @PostMapping("/signup")
